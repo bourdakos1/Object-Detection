@@ -66,29 +66,20 @@ print('detecting...')
 with detection_graph.as_default():
     with tf.Session(graph=detection_graph) as sess:
         image = Image.open(TEST_IMAGE_PATH)
-        # the array based representation of the image will be used later in order to prepare the
-        # result image with boxes and labels on it.
         image_np = load_image_into_numpy_array(image)
-        # Expand dimensions since the model expects images to have shape: [1, None, None, 3]
         image_np_expanded = np.expand_dims(image_np, axis=0)
         image_tensor = detection_graph.get_tensor_by_name('image_tensor:0')
-        # Each box represents a part of the image where a particular object was detected.
         boxes = detection_graph.get_tensor_by_name('detection_boxes:0')
-        # Each score represent how level of confidence for each of the objects.
-        # Score is shown on the result image, together with the class label.
         scores = detection_graph.get_tensor_by_name('detection_scores:0')
-        classes = detection_graph.get_tensor_by_name('detection_classes:0')
         num_detections = detection_graph.get_tensor_by_name('num_detections:0')
         # Actual detection.
-        (boxes, scores, classes, num_detections) = sess.run([boxes, scores, classes, num_detections], feed_dict={image_tensor: image_np_expanded})
+        (boxes, scores, num_detections) = sess.run([boxes, scores, num_detections], feed_dict={image_tensor: image_np_expanded})
 
-        # Create figure and axes
-        fig,ax = plt.subplots(1)
-        # Display the image
+        # Create figure and axes and display the image
+        fig, ax = plt.subplots(1)
         ax.imshow(image_np)
 
         (height, width, x) = image_np.shape
-
         for i in range(0, int(min(num_detections, MAX_NUMBER_OF_BOXES))):
             score = np.squeeze(scores)[i]
 
