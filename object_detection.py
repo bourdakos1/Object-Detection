@@ -15,7 +15,7 @@ import matplotlib.pyplot as plt
 import matplotlib.patches as patches
 
 # Replace with your api key
-visual_recognition = VisualRecognitionV3('2016-05-20', api_key='API_KEY')
+visual_recognition = VisualRecognitionV3('2016-05-20', api_key='INSERT_API_KEY_HERE')
 
 MAX_NUMBER_OF_BOXES = 10
 MINIMUM_CONFIDENCE = 0.6
@@ -104,7 +104,8 @@ with detection_graph.as_default():
 
             # Classify images with watson visual recognition
             with open(full_path, 'rb') as images_file:
-                results = visual_recognition.classify(images_file=images_file, threshold=0.7, classifier_ids=['default'])
+                parameters = json.dumps({'threshold': 0.7, 'classifier_ids': ['default']})
+                results = visual_recognition.classify(images_file=images_file, parameters=parameters)
                 print(json.dumps(results, indent=2))
                 label = results['images'][0]['classifiers'][0]['classes'][0]['class']
                 ax.text(box_x + 5, box_y - 5, label, fontsize=10, color='white', bbox={'facecolor':COLORS[i % 8], 'edgecolor':'none'})
