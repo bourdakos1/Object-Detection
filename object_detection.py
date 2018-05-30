@@ -15,7 +15,10 @@ import matplotlib.pyplot as plt
 import matplotlib.patches as patches
 
 # Replace with your api key
-visual_recognition = VisualRecognitionV3('2016-05-20', api_key='INSERT_API_KEY_HERE')
+visual_recognition = VisualRecognitionV3(
+    version='2018-03-19',
+    url='https://gateway.watsonplatform.net/visual-recognition/api',
+    iam_api_key='INSERT_API_KEY_HERE')
 
 MAX_NUMBER_OF_BOXES = 10
 MINIMUM_CONFIDENCE = 0.6
