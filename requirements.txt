@@ -26,4 +26,4 @@ tensorflow==1.4.0
 tensorflow-tensorboard==0.4.0rc3
 urllib3==1.22
 watson-developer-cloud==1.0.0
-Werkzeug==0.12.2
+Werkzeug==0.15.3
