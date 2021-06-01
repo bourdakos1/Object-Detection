@@ -24,6 +24,6 @@ requests==2.18.4
 six==1.11.0
 tensorflow==1.4.0
 tensorflow-tensorboard==0.4.0rc3
-urllib3==1.22
+urllib3==1.26.5
 watson-developer-cloud==1.0.0
 Werkzeug==0.12.2
