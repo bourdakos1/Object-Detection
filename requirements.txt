@@ -22,7 +22,7 @@ python-dateutil==2.6.1
 pytz==2017.3
 requests==2.18.4
 six==1.11.0
-tensorflow==1.4.0
+tensorflow==2.5.1
 tensorflow-tensorboard==0.4.0rc3
 urllib3==1.22
 watson-developer-cloud==1.0.0
